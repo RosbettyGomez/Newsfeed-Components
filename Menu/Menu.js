@@ -19,6 +19,9 @@ let menuItems = [
     </ul>
   </div>
 
+  
+  
+
   Pass the function an array as it's only argument.
 
   Step 2: Iterate over the array creating a list item <li> element for each item in the array. 
@@ -33,3 +36,25 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+function hamburger(menuItems){//anything that goes inside the () is a variable and/or argument
+  let menuDiv = document.createElement("div")//we created a div
+  menuDiv.classList.add("menu")//we added a class named menu to the above div
+  
+  let list = document.createElement("ul") //then we created a ul which means unordered list
+  menuDiv.appendChild(list)//then we placed the ul inside of the first and only div
+
+  menuItems.forEach(item =>{ //iterate means to go through the array from top to bottom, and for each item inside the array, perform some code.
+    let items = document.createElement("li")
+    items.textContent = item
+    list.appendChild(items)
+  })
+  let menuButton = document.querySelector(".menu-button")
+  menuButton.addEventListener("click", () =>{
+    menuDiv.classList.toggle("menu--open")
+  })
+
+
+  return menuDiv
+}
+let header = document.querySelector(".header")
+header.appendChild(hamburger(menuItems))
